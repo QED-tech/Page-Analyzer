@@ -12,3 +12,5 @@ lint-fix:
 	composer phpcbf
 test:
 	php artisan test
+deploy:
+	git push heroku main
