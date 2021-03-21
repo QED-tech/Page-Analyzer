@@ -11,7 +11,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Make install
+      - name: Make setup
         run: make install
 
       - name: Make lint
