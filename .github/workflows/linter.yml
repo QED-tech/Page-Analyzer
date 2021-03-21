@@ -12,7 +12,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Make setup
-        run: make install
+        run: make setup
 
       - name: Make lint
         run: make lint
