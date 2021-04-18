@@ -1,3 +1,6 @@
+setup:
+	composer install
+
 lint:
 	composer phpcs
 
