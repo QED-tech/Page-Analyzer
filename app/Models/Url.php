@@ -2,9 +2,49 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Query\Builder;
+use Carbon\Carbon;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\DB;
 
-class Url extends Builder
+class Url
 {
+    public static function create(string $name): bool
+    {
+        $url = DB::table('urls')
+            ->where('name', $name)
+            ->first();
 
+        if ($url === null) {
+            return DB::table('urls')->insert([
+                'name' => $name,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now()
+            ]);
+        }
+
+        return true;
+    }
+
+    public static function getLastRecord()
+    {
+        return DB::table('urls')->latest()->first();
+    }
+
+    public static function all(): LengthAwarePaginator
+    {
+        return DB::table('urls')
+            ->paginate(10);
+    }
+
+    public static function findById(int $id)
+    {
+        return DB::table('urls')->where('id', $id)->first();
+    }
+
+    public static function normalizeUrl(string $url): string
+    {
+        $host = parse_url($url, PHP_URL_HOST);
+        $scheme = parse_url($url, PHP_URL_SCHEME);
+        return "{$scheme}://{$host}";
+    }
 }

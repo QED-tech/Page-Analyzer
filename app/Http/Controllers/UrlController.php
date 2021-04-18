@@ -2,15 +2,20 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUrlRequest;
+use App\Models\Url;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
 class UrlController extends Controller
 {
 
-    public function index(): Response
+    public function index()
     {
-        //
+        return view('index', [
+            'urls' => Url::all()
+        ]);
     }
 
 
@@ -20,15 +25,21 @@ class UrlController extends Controller
     }
 
 
-    public function store(Request $request): Response
+    public function store(StoreUrlRequest $request): RedirectResponse
     {
-        //
+        $url = Url::normalizeUrl($request->input('url.name'));
+        Url::create($url);
+        flash('Url добавлен')->success();
+        $currentUrl = Url::getLastRecord();
+        return redirect()->route('urls.show', $currentUrl->id);
     }
 
 
-    public function show(int $id): Response
+    public function show(int $id)
     {
-        //
+        return view('show', [
+            'url' => Url::findById($id)
+        ]);
     }
 
 

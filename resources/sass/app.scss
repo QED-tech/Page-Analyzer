@@ -6,3 +6,8 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+.navbar {
+    border-radius: 0 !important;
+    margin-bottom: 0 !important;
+}
