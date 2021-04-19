@@ -17,7 +17,12 @@ console:
 	php artisan tinker
 
 test:
-	php artisan test
+	docker-compose exec php-fpm php artisan test
+
+linter-test:
+	make compose
+	make test
+	make compose-down
 
 deploy:
 	git push heroku main
