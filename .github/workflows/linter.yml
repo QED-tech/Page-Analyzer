@@ -18,4 +18,4 @@ jobs:
         run: make lint
 
       - name: Make test
-        run: make linter-test
+        run: make test
