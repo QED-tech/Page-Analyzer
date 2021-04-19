@@ -27,11 +27,18 @@ class UrlController extends Controller
 
     public function store(StoreUrlRequest $request): RedirectResponse
     {
-        $url = Url::normalizeUrl($request->input('url.name'));
+        $url = Url::normalizeUrl(
+            $request
+                ->input('url.name')
+        );
         Url::create($url);
-        flash('Url добавлен')->success();
+
+        flash('Url добавлен')
+            ->success();
         $currentUrl = Url::getLastRecord();
-        return redirect()->route('urls.show', $currentUrl->id);
+
+        return redirect()
+            ->route('urls.show', $currentUrl->id);
     }
 
 

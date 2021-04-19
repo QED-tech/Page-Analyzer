@@ -25,6 +25,11 @@ class Url
         return true;
     }
 
+    public static function deleteById(int $id): int
+    {
+        return DB::table('urls')->delete($id);
+    }
+
     public static function getLastRecord()
     {
         return DB::table('urls')->latest()->first();
