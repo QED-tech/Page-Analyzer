@@ -13,7 +13,6 @@ class UrlControllerTest extends TestCase
 
     protected function setUp(): void
     {
-
         parent::setUp();
     }
 
@@ -34,8 +33,5 @@ class UrlControllerTest extends TestCase
         $response = $this->post(route('urls.store'), ['url' => $data]);
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
-
-
-        Url::deleteById($currentUrl->id);
     }
 }

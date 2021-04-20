@@ -5,8 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreUrlRequest;
 use App\Models\Url;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
-use Illuminate\Http\Response;
 
 class UrlController extends Controller
 {
@@ -47,23 +45,5 @@ class UrlController extends Controller
         return view('show', [
             'url' => Url::findById($id)
         ]);
-    }
-
-
-    public function edit(int $id): Response
-    {
-        //
-    }
-
-
-    public function update(Request $request, int $id): Response
-    {
-        //
-    }
-
-
-    public function destroy(int $id): Response
-    {
-        //
     }
 }
