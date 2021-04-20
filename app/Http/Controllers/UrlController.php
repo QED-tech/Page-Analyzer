@@ -46,4 +46,9 @@ class UrlController extends Controller
             'url' => Url::findById($id)
         ]);
     }
+
+    public function check(int $id)
+    {
+        //TODO check url code...
+    }
 }
