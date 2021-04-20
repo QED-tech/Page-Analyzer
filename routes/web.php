@@ -14,8 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-})->name('home');
-
-Route::resource('urls', UrlController::class);
+Route::get('/', [UrlController::class, 'create'])->name('home');
+Route::resource('urls', UrlController::class)->only([
+    'store', 'show', 'index'
+]);

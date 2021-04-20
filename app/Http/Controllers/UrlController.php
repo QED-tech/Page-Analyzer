@@ -19,9 +19,9 @@ class UrlController extends Controller
     }
 
 
-    public function create(): Response
+    public function create()
     {
-        //
+        return view('welcome');
     }
 
 
