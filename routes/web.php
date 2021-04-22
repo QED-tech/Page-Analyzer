@@ -15,8 +15,9 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [UrlController::class, 'create'])->name('home');
+/* <--- URLS ---->  */
 Route::resource('urls', UrlController::class)->only([
     'store', 'show', 'index'
 ]);
+Route::get('/', [UrlController::class, 'create'])->name('home');
 Route::post('urls/{id}/checks', [UrlController::class, 'check'])->name('urls.checks');

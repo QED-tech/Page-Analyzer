@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreUrlRequest;
 use App\Models\Url;
+use App\Models\UrlCheck;
 use Illuminate\Http\RedirectResponse;
 
 class UrlController extends Controller
@@ -43,12 +44,17 @@ class UrlController extends Controller
     public function show(int $id)
     {
         return view('show', [
-            'url' => Url::findById($id)
+            'url' => Url::findById($id),
+            'urlChecks' => UrlCheck::findByUrlId($id)
         ]);
     }
 
-    public function check(int $id)
+    public function check(int $id): RedirectResponse
     {
-        //TODO check url code...
+        UrlCheck::create($id);
+        flash('Страница успешно проверена')
+            ->info();
+        return redirect()
+            ->back();
     }
 }
