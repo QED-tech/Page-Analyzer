@@ -12,9 +12,6 @@ class UrlControllerTest extends TestCase
 {
     use DatabaseMigrations;
 
-    /* @var string */
-    public const FAKE_URL = 'for-tests';
-
     protected function setUp(): void
     {
         parent::setUp();
@@ -55,7 +52,7 @@ class UrlControllerTest extends TestCase
 
     public function testCheck()
     {
-        Url::create(self::FAKE_URL);
+        Url::create(UrlCheck::FAKE_URL);
         $currentUrl = Url::getLastRecord();
         $response = $this->post(route('urls.checks', $currentUrl->id));
         $response->assertSessionHasNoErrors();

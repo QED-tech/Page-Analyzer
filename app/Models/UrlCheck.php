@@ -11,6 +11,10 @@ use Tests\Feature\UrlControllerTest;
 
 class UrlCheck
 {
+
+    /* @var string */
+    public const FAKE_URL = 'for-tests';
+
     public static function create(int $urlId, int $statusCode): bool
     {
         Url::updateUrlById($urlId);
@@ -50,7 +54,7 @@ class UrlCheck
         if ($url === null) {
             throw new InvalidArgumentException("Url not found");
         }
-        if ($url->name === UrlControllerTest::FAKE_URL) {
+        if ($url->name === self::FAKE_URL) {
             return 200;
         }
         $response = Http::get($url->name);
