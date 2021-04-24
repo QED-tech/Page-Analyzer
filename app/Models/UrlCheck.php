@@ -7,7 +7,6 @@ use http\Exception\InvalidArgumentException;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
-use Tests\Feature\UrlControllerTest;
 
 class UrlCheck
 {

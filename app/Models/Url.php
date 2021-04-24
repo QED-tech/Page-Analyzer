@@ -8,21 +8,21 @@ use Illuminate\Support\Facades\DB;
 
 class Url
 {
-    public static function create(string $name): bool
+    public static function create(string $name): int
     {
         $url = DB::table('urls')
             ->where('name', $name)
             ->first();
 
         if ($url === null) {
-            return DB::table('urls')->insert([
+            return DB::table('urls')->insertGetId([
                 'name' => $name,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now()
             ]);
         }
 
-        return true;
+        return $url->id;
     }
 
     public static function updateUrlById(int $id): void

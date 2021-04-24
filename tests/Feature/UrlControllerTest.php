@@ -25,17 +25,15 @@ class UrlControllerTest extends TestCase
 
     public function testShow()
     {
-        Url::create('https://ru.test-test1.io');
-        $currentUrl = Url::getLastRecord();
-        $response = $this->get(route('urls.show', $currentUrl->id));
+        $id = Url::create('https://ru.test-test1.io');
+        $response = $this->get(route('urls.show', $id));
         $response->assertOk();
     }
 
     public function testIndex()
     {
-        Url::create('https://ru.test-test1.io');
-        $currentUrl = Url::getLastRecord();
-        UrlCheck::create($currentUrl->id, 200);
+        $id = Url::create('https://ru.test-test1.io');
+        UrlCheck::create($id, 200);
         $response = $this->get(route('urls.index'));
         $response->assertOk();
     }
@@ -52,9 +50,8 @@ class UrlControllerTest extends TestCase
 
     public function testCheck()
     {
-        Url::create(UrlCheck::FAKE_URL);
-        $currentUrl = Url::getLastRecord();
-        $response = $this->post(route('urls.checks', $currentUrl->id));
+        $id = Url::create(UrlCheck::FAKE_URL);
+        $response = $this->post(route('urls.checks', $id));
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
     }

@@ -30,14 +30,13 @@ class UrlController extends Controller
             $request
                 ->input('url.name')
         );
-        Url::create($url);
+        $id = Url::create($url);
 
         flash('Url добавлен')
             ->info();
-        $currentUrl = Url::getLastRecord();
 
         return redirect()
-            ->route('urls.show', $currentUrl->id);
+            ->route('urls.show', $id);
     }
 
 
