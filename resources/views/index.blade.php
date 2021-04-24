@@ -16,7 +16,7 @@
                     <td>{{ $url->id }}</td>
                     <td><a href="{{ route('urls.show', $url->id) }}">{{ $url->name }}</a></td>
                     <td>{{ $url->updated_at }}</td>
-                    <td>200</td>
+                    <td>{{ \App\Models\UrlCheck::getLastUrlCheckById($url->id)->status_code }}</td>
                 </tr>
             @endforeach
             </tbody>

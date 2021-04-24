@@ -25,6 +25,15 @@ class Url
         return true;
     }
 
+    public static function updateUrlById(int $id): void
+    {
+        DB::table('urls')
+            ->where('id', $id)
+            ->update([
+                'updated_at' => Carbon::now()
+            ]);
+    }
+
     public static function deleteById(int $id): int
     {
         return DB::table('urls')->delete($id);

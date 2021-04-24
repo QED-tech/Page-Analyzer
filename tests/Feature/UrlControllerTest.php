@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Url;
+use App\Models\UrlCheck;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Support\Arr;
 use Tests\TestCase;
@@ -10,6 +11,9 @@ use Tests\TestCase;
 class UrlControllerTest extends TestCase
 {
     use DatabaseMigrations;
+
+    /* @var string */
+    public const FAKE_URL = 'for-tests';
 
     protected function setUp(): void
     {
@@ -33,8 +37,8 @@ class UrlControllerTest extends TestCase
     public function testIndex()
     {
         Url::create('https://ru.test-test1.io');
-        Url::create('https://ru.test-test2.io');
-        Url::create('https://ru.test-test3.io');
+        $currentUrl = Url::getLastRecord();
+        UrlCheck::create($currentUrl->id, 200);
         $response = $this->get(route('urls.index'));
         $response->assertOk();
     }
@@ -51,7 +55,7 @@ class UrlControllerTest extends TestCase
 
     public function testCheck()
     {
-        Url::create('https://ru.test-test.io');
+        Url::create(self::FAKE_URL);
         $currentUrl = Url::getLastRecord();
         $response = $this->post(route('urls.checks', $currentUrl->id));
         $response->assertSessionHasNoErrors();
