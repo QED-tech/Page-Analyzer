@@ -68,21 +68,14 @@ class UrlCheck
 
         try {
             $h1 = optional($document->first('h1'));
-            if ($h1 !== null) {
-                $info['h1'] = $h1->text();
-            }
+            $info['h1'] = $h1->text();
             $content = optional($document->first('meta[name=description]'));
-            if ($content !== null) {
-                $info['description'] = $content->attr('content');
-            }
+            $info['description'] = $content->attr('content');
             $keywords = optional($document->first('meta[name=keywords]'));
-            if ($keywords !== null) {
-                $info['keywords'] = $content->attr('content');
-            }
+            $info['keywords'] = $keywords->attr('content');
         } catch (InvalidSelectorException $e) {
             return $info;
         }
-
         return $info;
     }
 
