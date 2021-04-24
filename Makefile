@@ -1,5 +1,4 @@
 setup:
-	composer update
 	composer install
 	cp -n .env.example .env|| true
 	php artisan key:gen --ansi
