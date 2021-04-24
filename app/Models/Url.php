@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Carbon\Carbon;
 use Illuminate\Contracts\Pagination\LengthAwarePaginator;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Facades\DB;
 
 class Url
@@ -40,7 +42,10 @@ class Url
         return DB::table('urls')->delete($id);
     }
 
-    public static function getLastRecord(): object
+    /**
+     * @return Model|Builder|object|null
+     */
+    public static function getLastRecord()
     {
         return DB::table('urls')->latest()->first();
     }
@@ -51,7 +56,11 @@ class Url
             ->paginate(10);
     }
 
-    public static function findById(int $id): object
+
+    /**
+     * @return Model|Builder|object|null
+     */
+    public static function findById(int $id)
     {
         return DB::table('urls')->where('id', $id)->first();
     }

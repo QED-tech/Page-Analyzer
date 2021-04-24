@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use DiDom\Document;
 use DiDom\Exceptions\InvalidSelectorException;
 use http\Exception\InvalidArgumentException;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Http;
@@ -37,7 +39,10 @@ class UrlCheck
             ->get();
     }
 
-    public static function getLastUrlCheckById(int $urlId): object
+    /**
+     * @return Model|Builder|object|null
+     */
+    public static function getLastUrlCheckById(int $urlId)
     {
         return DB::table('url_checks')
             ->where('url_id', $urlId)
