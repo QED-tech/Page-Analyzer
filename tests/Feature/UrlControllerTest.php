@@ -50,12 +50,4 @@ class UrlControllerTest extends TestCase
         $response->assertSessionHasNoErrors();
         $response->assertRedirect();
     }
-
-    public function testCheck()
-    {
-        $id = Url::create(UrlCheck::FAKE_URL);
-        $response = $this->post(route('urls.checks', $id));
-        $response->assertSessionHasNoErrors();
-        $response->assertRedirect();
-    }
 }

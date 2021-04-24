@@ -45,14 +45,4 @@ class UrlController extends Controller
             'urlChecks' => UrlCheck::findByUrlId($id)
         ]);
     }
-
-    public function check(int $id): RedirectResponse
-    {
-        $info = UrlCheck::getUrlInfo($id);
-        UrlCheck::create($id, $info);
-        flash('Страница успешно проверена')
-            ->info();
-        return redirect()
-            ->back();
-    }
 }
