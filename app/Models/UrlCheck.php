@@ -67,15 +67,15 @@ class UrlCheck
         $document = new Document($url->name, true);
 
         try {
-            $h1 = $document->first('h1');
+            $h1 = optional($document->first('h1'));
             if ($h1 !== null) {
                 $info['h1'] = $h1->text();
             }
-            $content = $document->first('meta[name^=description]');
+            $content = optional($document->first('meta[name=description]'));
             if ($content !== null) {
                 $info['description'] = $content->attr('content');
             }
-            $keywords = $document->first('meta[name^=keywords]');
+            $keywords = optional($document->first('meta[name=keywords]'));
             if ($keywords !== null) {
                 $info['keywords'] = $content->attr('content');
             }

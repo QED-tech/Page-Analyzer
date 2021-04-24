@@ -22,6 +22,7 @@ class Url
             ]);
         }
 
+        self::updateUrlById($url->id);
         return $url->id;
     }
 
