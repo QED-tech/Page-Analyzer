@@ -31,10 +31,8 @@ class UrlController extends Controller
                 ->input('url.name')
         );
         $id = Url::create($url);
-
         flash('Url добавлен')
             ->info();
-
         return redirect()
             ->route('urls.show', $id);
     }
