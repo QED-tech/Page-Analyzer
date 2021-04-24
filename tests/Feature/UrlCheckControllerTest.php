@@ -11,7 +11,7 @@ class UrlCheckControllerTest extends TestCase
 {
     use DatabaseMigrations;
 
-    public function testStore()
+    public function testStore(): void
     {
         $id = Url::create(UrlCheck::FAKE_URL);
         $response = $this->post(route('checks.store', $id));

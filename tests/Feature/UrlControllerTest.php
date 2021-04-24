@@ -17,20 +17,20 @@ class UrlControllerTest extends TestCase
         parent::setUp();
     }
 
-    public function testCreate()
+    public function testCreate(): void
     {
         $response = $this->get(route('home'));
         $response->assertOk();
     }
 
-    public function testShow()
+    public function testShow(): void
     {
         $id = Url::create('https://ru.test-test1.io');
         $response = $this->get(route('urls.show', $id));
         $response->assertOk();
     }
 
-    public function testIndex()
+    public function testIndex(): void
     {
         $id = Url::create('https://ru.test-test1.io');
         $params = [
@@ -41,7 +41,7 @@ class UrlControllerTest extends TestCase
         $response->assertOk();
     }
 
-    public function testStore()
+    public function testStore(): void
     {
         Url::create('https://ru.test-test.io');
         $currentUrl = Url::getLastRecord();

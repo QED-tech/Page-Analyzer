@@ -40,7 +40,7 @@ class Url
         return DB::table('urls')->delete($id);
     }
 
-    public static function getLastRecord()
+    public static function getLastRecord(): object
     {
         return DB::table('urls')->latest()->first();
     }
@@ -51,7 +51,7 @@ class Url
             ->paginate(10);
     }
 
-    public static function findById(int $id)
+    public static function findById(int $id): object
     {
         return DB::table('urls')->where('id', $id)->first();
     }

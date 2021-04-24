@@ -6,11 +6,12 @@ use App\Http\Requests\StoreUrlRequest;
 use App\Models\Url;
 use App\Models\UrlCheck;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class UrlController extends Controller
 {
 
-    public function index()
+    public function index(): View
     {
         return view('index', [
             'urls' => Url::all()
@@ -18,7 +19,7 @@ class UrlController extends Controller
     }
 
 
-    public function create()
+    public function create(): View
     {
         return view('welcome');
     }
@@ -37,8 +38,7 @@ class UrlController extends Controller
             ->route('urls.show', $id);
     }
 
-
-    public function show(int $id)
+    public function show(int $id): View
     {
         return view('show', [
             'url' => Url::findById($id),

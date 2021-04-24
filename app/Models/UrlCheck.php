@@ -37,7 +37,7 @@ class UrlCheck
             ->get();
     }
 
-    public static function getLastUrlCheckById(int $urlId)
+    public static function getLastUrlCheckById(int $urlId): object
     {
         return DB::table('url_checks')
             ->where('url_id', $urlId)
