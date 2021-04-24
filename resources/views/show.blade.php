@@ -49,9 +49,9 @@
                 <tr>
                     <th>{{ $urlCheck->id }}</th>
                     <th>{{ $urlCheck->status_code }}</th>
-                    <th>{{ $urlCheck->h1 }}</th>
-                    <th>{{ $urlCheck->keywords }}</th>
-                    <th>{{ $urlCheck->description }}</th>
+                    <th>{{ \Illuminate\Support\Str::limit($urlCheck->h1, 30) }}</th>
+                    <th>{{ \Illuminate\Support\Str::limit($urlCheck->keywords, 30) }}</th>
+                    <th>{{ \Illuminate\Support\Str::limit($urlCheck->description, 30) }}</th>
                     <th>{{ $urlCheck->created_at }}</th>
                 </tr>
             @endforeach

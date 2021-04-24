@@ -33,7 +33,10 @@ class UrlControllerTest extends TestCase
     public function testIndex()
     {
         $id = Url::create('https://ru.test-test1.io');
-        UrlCheck::create($id, 200);
+        $params = [
+            'status' => 200
+        ];
+        UrlCheck::create($id, $params);
         $response = $this->get(route('urls.index'));
         $response->assertOk();
     }

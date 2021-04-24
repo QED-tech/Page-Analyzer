@@ -48,8 +48,8 @@ class UrlController extends Controller
 
     public function check(int $id): RedirectResponse
     {
-        $status = UrlCheck::getUrlInfo($id);
-        UrlCheck::create($id, $status);
+        $info = UrlCheck::getUrlInfo($id);
+        UrlCheck::create($id, $info);
         flash('Страница успешно проверена')
             ->info();
         return redirect()
