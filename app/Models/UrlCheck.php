@@ -18,7 +18,6 @@ class UrlCheck
 
     public static function create(int $urlId, array $info): bool
     {
-        Url::updateUrlById($urlId);
         return DB::table('url_checks')->insert([
             'url_id' => $urlId,
             'status_code' => $info['status'],
