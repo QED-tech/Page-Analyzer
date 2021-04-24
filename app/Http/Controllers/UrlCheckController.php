@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\UrlCheck;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 
 class UrlCheckController extends Controller
 {

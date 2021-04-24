@@ -55,10 +55,7 @@ class UrlCheck
             ->where('id', $urlId)
             ->first();
 
-        if ($url === null) {
-            throw new InvalidArgumentException("Url not found");
-        }
-        if ($url->name === self::FAKE_URL) {
+        if ($url === null || $url->name === self::FAKE_URL) {
             return self::fakeUrlHandle();
         }
         $response = Http::get($url->name);
