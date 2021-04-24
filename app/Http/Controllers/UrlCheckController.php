@@ -15,6 +15,6 @@ class UrlCheckController extends Controller
         flash('Страница успешно проверена')
             ->info();
         return redirect()
-            ->back();
+            ->route('urls.show', $id);
     }
 }

@@ -61,11 +61,8 @@ class UrlCheck
         $info = [
             'status' => $response->status()
         ];
-        if (!$response->ok()) {
-            return $info;
-        }
-        $document = new Document($url->name, true);
-
+        $body = $response->body();
+        $document = new Document($body);
         try {
             $h1 = optional($document->first('h1'));
             $info['h1'] = $h1->text();
