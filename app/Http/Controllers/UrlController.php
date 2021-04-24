@@ -33,7 +33,7 @@ class UrlController extends Controller
         Url::create($url);
 
         flash('Url добавлен')
-            ->success();
+            ->info();
         $currentUrl = Url::getLastRecord();
 
         return redirect()
